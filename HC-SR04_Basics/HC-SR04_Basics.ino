@@ -23,11 +23,6 @@ void ScanD() {
   delay(100);
 }
 
-void PrintDistance( int distance) {
-    Serial.print("Distance: ");
-    Serial.println(distance);
-}
-
 
 void loop() {
   digitalWrite(trigPin, LOW);
@@ -37,18 +32,18 @@ void loop() {
   digitalWrite(trigPin, LOW);
   
   ScanD();
-  PrintDistance(distance);
   for (int pos = 0; pos <= 180; pos +=1) {
     myservo.write(pos);
-    Serial.print("Pos: ");
-    Serial.println(pos);
+    Serial.print(pos);
+    Serial.print(",");
+    Serial.println(distance);   
     delay(15);
   }
-  PrintDistance(distance);
  for (int pos = 180; pos >= 0; pos -=1) {
     myservo.write(pos);
-    Serial.print("Pos: ");
-    Serial.println(pos);
+    Serial.print(pos);
+    Serial.print(",");
+    Serial.println(distance);   
     delay(15);
  }
   
